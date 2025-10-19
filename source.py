@@ -1,4 +1,4 @@
-
+#part for custom coefficient to covert to scores
 def calculateOne(coefficients: list[float],player_data:list[int])->float:
 #only for one player
     temp=min(len(coefficients),len(player_data))
@@ -13,4 +13,33 @@ def calculateAll(coefficients: list[float], all_player_data: list[list[int]]) ->
     res=[]
     for data in all_player_data:
         res.append(calculateOne(coefficients,data))
+
+    return res
+
+
+#part for merge sort
+def mergeSort(arr:list[double])->list[double]:
+    #base
+    if(len(arr))<=1:
+        return arr
+    mid=len(arr)//2
+    left=arr[:mid]#pyton slicing
+    right=arr[mid:]
+    sortedLeft=mergeSort(left)
+    sortedRight=mergeSort(right)#divide and conquer
+    return merge(sortedLeft,sortedRight)#this is the key. call helper
+def merge(left: list[double], right: list[double])->list[double]:
+    res=[]
+    i, j = 0, 0
+    while i< len(left) and j< len(right):
+        if left[i]>right[i]:
+            res.append(right[j])
+            j+=1
+        else:
+            res.append(left[i])
+            i+=1
+    for a in left[i:]:
+        res.append(a)
+    for b in right[j:]:
+        res.append(b)
     return res
