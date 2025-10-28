@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-db_path = os.path.join(os.path.dirname(__file__), '../data/nba.sqlite')
+db_path = os.path.join(os.path.dirname(__file__), "../data/nba.sqlite")
 
 db = sqlite3.connect(db_path)
 cursor = db.cursor()
