@@ -1,5 +1,5 @@
 #build the heap
-def heapify(players, size, root):
+def heapify(players, size, root, reverse=False):
     #initialize the largest
     largest = root
 
@@ -19,3 +19,14 @@ def heapify(players, size, root):
     if largest != root:
         (players[root], players[largest]) = (players[largest], players[root])
         heapify(players, size, largest)
+
+
+def build_heap(players):
+    size = len(players)
+    for i in range(size // 2 - 1, -1, -1):
+        heapify(players, size, i)
+
+
+def heap_sort(players):
+    players = players.copy()
+    build_heap(players)
