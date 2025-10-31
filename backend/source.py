@@ -9,7 +9,6 @@ def calculateOne(coefficients: list[float], player_data: list[int]) -> float:
         score = score + coefficients[i] * player_data[i]
     return score
 
-
 def calculateAll(
     coefficients: list[float], all_player_data: list[list[int]]
 ) -> list[float]:
