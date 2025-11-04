@@ -1,10 +1,12 @@
 import sqlite3
 import os
 import pandas as pd
+from heapsort import heap_sort
+import time
 
 csv_path = os.path.join(os.path.dirname(__file__), "../data/archive/PlayerStatistics.csv")
 
-def get_averages(stat='points', season_start='2025-10-20'):
+def get_averages(season_start='2025-10-20'):
     try:
         df = pd.read_csv(csv_path, usecols=['firstName', 'lastName', 'gameDate', 
                                             'points', 'reboundsTotal','assists', 
@@ -64,12 +66,26 @@ def get_averages(stat='points', season_start='2025-10-20'):
 
 
 if __name__ == "__main__":
-    print("\nFirst players:")
+    print("\nTop players:")
 
-    df = get_averages(stat="points", season_start="2025-10-20")
+    df = get_averages(season_start="2025-10-20")
 
-    if not df.empty:
-        print(df[['Player', 'PPG', 'RPG', 'APG', 'STL', 'BLK', 'FG%', '3P%', 'FT%', '+/-']].head(10))
-    else:
-        print("No data loaded — check your CSV path or column names.")
+    players = df.to_dict(orient='records')
+
+    stat = 'APG'
+
+    #see how long heap takes
+    start_time = time.time()
+
+    heap_sorted = heap_sort(players, key=stat, reverse=True)
+
+    #end heap timer
+    end_time = time.time()
+    elapsed = end_time - start_time
+
+    print(f"Top 10 players by {stat} (Heap Sort):")
+    for p in heap_sorted[:10]:
+        print(f"{p['Player']:25s} {p[stat]:6.1f}")
+
+    print(f"\nHeap sort completed in {elapsed:.6f} seconds.")
 
