@@ -2,6 +2,7 @@ import sqlite3
 import os
 import pandas as pd
 from heapsort import heap_sort
+from mergesort import merge_sort
 import time
 
 csv_path = os.path.join(os.path.dirname(__file__), "../data/archive/PlayerStatistics.csv")
@@ -69,23 +70,35 @@ if __name__ == "__main__":
     print("\nTop players:")
 
     df = get_averages(season_start="2025-10-20")
-
     players = df.to_dict(orient='records')
-
     stat = 'APG'
 
-    #see how long heap takes
-    start_time = time.time()
+    #APPLY HEAP AND TRACK TIME
+    start_heap = time.time()
 
     heap_sorted = heap_sort(players, key=stat, reverse=True)
+    merge_sorted = merge_sort(players, key=stat, reverse=True)
 
     #end heap timer
-    end_time = time.time()
-    elapsed = end_time - start_time
+    end_heap = time.time()
+    elapsed_heap = end_heap - start_heap
+
+
+    #APPLY MERGE AND TRACK TIME
+    start_merge = time.time()
+    merge_sorted = merge_sort(players, key=stat, reverse=True)
+    #end heap timer
+    end_merge = time.time()
+
+    elapsed_merge = end_merge - start_merge
 
     print(f"Top 10 players by {stat} (Heap Sort):")
     for p in heap_sorted[:10]:
         print(f"{p['Player']:25s} {p[stat]:6.1f}")
 
-    print(f"\nHeap sort completed in {elapsed:.6f} seconds.")
+    print(f"\n\nTop 10 players by {stat} (Merge Sort):")
+    for p in merge_sorted[:10]:
+        print(f"{p['Player']:25s} {p[stat]:6.1f}")
 
+    print(f"\nHeap sort completed in {elapsed_heap:.6f} seconds.")
+    print(f"\nMerge sort completed in {elapsed_merge:.6f} seconds.")
