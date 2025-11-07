@@ -1,5 +1,5 @@
 import Header from "./components/Header"
-import InputBar from "./components/InputBar"
+import Dropdown from "./components/Dropdown"
 
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <InputBar />
+      <Dropdown />
     </>
   )
 }

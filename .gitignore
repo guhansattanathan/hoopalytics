@@ -241,3 +241,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+Games.csv
+LeagueSchedule24_25.csv
+LeagueSchedule25_26.csv
+Players.csv
+PlayerStatistics.csv
+TeamHistories.csv
+TeamStatistics.csv
