@@ -1,5 +1,6 @@
 import Header from "./components/Header"
 import Dropdown from "./components/Dropdown"
+import TopPlayersTable from "./components/TopPlayersTable"
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <>
       <Header />
       <Dropdown />
+      <TopPlayersTable />
     </>
   )
 }
