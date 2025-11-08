@@ -20,7 +20,7 @@ def calculateAll(
 
     return res
 
-
+#original merge sort
 # part for merge sort
 def mergeSort(arr: list[float]) -> list[float]:
     # base

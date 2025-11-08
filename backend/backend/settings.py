@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-*h=x!n8txh_+j(4$a4jn)db2@mjr3y-j*$ty+%9g8avyua7q77
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,13 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "playground",
-    "corsheaders"
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
     'corsheaders.middleware.CorsMiddleware', 
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -76,6 +75,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "backend.wsgi.application"
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ["*"]
+CORS_ALLOW_METHODS = ["*"]
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

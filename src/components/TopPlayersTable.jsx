@@ -149,7 +149,7 @@ export default function TopPlayersTable() {
             setError(null);
 
             try {
-                const url = `http://127.0.0.1:8000/?stat=${selectedStat}`;
+                const url = `https://cuddly-guacamole-pj75wgr44qwvcvxw-8000.app.github.dev/?stat=${selectedStat}`;
                 const response = await fetch(url);
                 
                 if (!response.ok) {
