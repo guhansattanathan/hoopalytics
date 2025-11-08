@@ -1,5 +1,3 @@
-import React from 'react';
-
 const stats = [
   { value: 'PPG', label: 'Points Per Game (PPG)' },
   { value: 'APG', label: 'Assists Per Game (APG)' },
