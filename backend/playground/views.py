@@ -18,6 +18,7 @@ def get_averages(season_start='2025-10-20'):
             'freeThrowsMade','freeThrowsAttempted',
             'plusMinusPoints','gameType'
         ])
+        df.columns = df.columns.str.strip().str.replace(' ', '', regex=False).str.replace('±', '+/-', regex=False)
         df['gameDate'] = pd.to_datetime(df['gameDate'], errors='coerce', utc=True)
         df = df[df['gameDate'] >= pd.Timestamp(season_start, tz="UTC")]
         df['Player'] = df['firstName'] + ' ' + df['lastName']
