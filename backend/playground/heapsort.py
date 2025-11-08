@@ -26,19 +26,25 @@ def heapify(players, size, root, key, reverse=False):
         players[root], players[largest] = players[largest], players[root]
         heapify(players, size, largest, key, reverse)
 
-
+# build heap from the bottom to top
 def build_heap(players, key, reverse=False):
     size = len(players)
+    # last non-leaf to upward
     for i in range(size // 2 - 1, -1, -1):
+        #each subtree satisfies heap
         heapify(players, size, i, key, reverse)
 
-
+# heap sort on players list
 def heap_sort(players, key, reverse=False):
+    # copy so original not modified
     players = players.copy()
     size = len(players)
+    #build heap structure
     build_heap(players, key, reverse)
 
+    #get heap elements one at a time
     for i in range(size-1, 0, -1):
+        #move current largest elem to end and restore
         players[i], players[0] = players[0], players[i]
         heapify(players, i , 0, key, reverse)
 
