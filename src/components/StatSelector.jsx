@@ -1,4 +1,3 @@
-// StatSelector.jsx
 import React from 'react';
 
 const stats = [
@@ -12,7 +11,6 @@ const stats = [
 
 export default function StatSelector({ selectedStat, onStatChange }) {
   const handleChange = (event) => {
-    // Call the setter function passed from the parent component
     onStatChange(event.target.value); 
   };
 
